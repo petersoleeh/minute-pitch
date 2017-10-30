@@ -8,6 +8,7 @@ def index():
     landing page
     '''
     title = 'Minute pitch'
+
     return render_template('index.html',title =title)
 
 
