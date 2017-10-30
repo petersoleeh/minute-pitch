@@ -1,16 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  {%if title%}
-  <title>{{title}}</title>
-  {%else%}
-  <title>The Pitch</title>
-  {%endif%}
-</head>
-<body>
+{%extends 'base.html'%}
+<!-- content block -->
+{%block content%}
   <h1 class="text-center">MINUTE PITCH</h1>
   <div class="container">
     <div class="row">
@@ -23,5 +13,4 @@
       </div>
     </div>
   </div>
-</body>
-</html>
+{%endblock%}
