@@ -1,8 +1,8 @@
 from flask import render_template
-from app import app
+from . import main
 
 
-@app.route('/')
+@main.route('/')
 def index():
     '''
     landing page
@@ -12,7 +12,7 @@ def index():
     return render_template('index.html',title =title)
 
 
-@app.route('/categories/<id>')
+@main.route('/categories/<id>')
 def categories(id):
     '''
     new route that will display the contents of a specific category
