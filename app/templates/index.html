@@ -1,4 +1,13 @@
-{%extends 'base.html'%}
+{%extends 'base.html'%} {%import 'macros.html'as macro%}
+
+<!-- Styles block -->
+
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
+
+
 <!-- content block -->
 {%block content%}
   <h1 class="text-center">MINUTE PITCH</h1>
@@ -13,4 +22,8 @@
       </div>
     </div>
   </div>
+  <h3>The Categories Available</h3>
+  <ul>
+    {{macro.displayCategoryList(category)}}
+  </ul>
 {%endblock%}
