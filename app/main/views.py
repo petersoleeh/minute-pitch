@@ -1,5 +1,6 @@
 from flask import render_template
 from . import main
+# from ..models import get_pitches
 
 
 @main.route('/')
@@ -8,8 +9,9 @@ def index():
     landing page
     '''
     title = 'Minute pitch'
+    pitches = get_pitches(id)
 
-    return render_template('index.html',title =title)
+    return render_template('index.html',title =title,id= pitches)
 
 
 @main.route('/categories/<id>')
