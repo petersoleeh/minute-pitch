@@ -10,7 +10,13 @@
 
 <!-- content block -->
 {%block content%}
+
   <h1 class="text-center">MINUTE PITCH</h1>
+  <h3>The Categories Available</h3>
+  <ul>
+    {{macro.displayCategoryList(category)}}
+  </ul>
+
   <div class="container">
     <div class="row">
       <div class="col-4">
@@ -22,8 +28,4 @@
       </div>
     </div>
   </div>
-  <h3>The Categories Available</h3>
-  <ul>
-    {{macro.displayCategoryList(category)}}
-  </ul>
 {%endblock%}

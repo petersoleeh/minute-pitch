@@ -1,2 +1,5 @@
 virtual/
-.DS_store
+.DS_Store
+*.pyc
+start.sh
+instance
