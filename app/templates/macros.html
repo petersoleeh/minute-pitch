@@ -1,7 +1,10 @@
 {%macro displayCategoryList(category_list)%}
 
   {% for category in category_list%}
-    <li>{{category.name}}</li>
+  <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 pitch-card">
+    <h2><a href="/categories/{{category.id}}"> {{ category.name }} </a></h2>
+    <h4>{{category.description}}</h4>
+  </div>
 
   {%endfor%}
 
