@@ -2,7 +2,7 @@ import os
 
 class Config:
 
-    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://soleeh:soleeh..@localhost/minutepitch'
+    SQLALCHEMY_TRACK_MODIFICATION = False
     SECRET_KEY =os.environ.get('SECRET_KEY')
 
 class ProdConfig(Config):
@@ -22,6 +22,7 @@ class DevConfig(Config):
     Args:
         Config: The parent configuration class with General configuration settings
     '''
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://soleeh:soleeh..@localhost/minutepitch'
 
 
 
