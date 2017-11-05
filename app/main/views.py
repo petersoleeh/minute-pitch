@@ -5,6 +5,7 @@ from ..models import Category,Comment,User,Pitch
 from flask_login import login_required
 from .forms import CommentForm
 from .. import db
+from .forms import PitchForm,CommentForm
 
 
 @main.route('/')
@@ -22,9 +23,47 @@ def index():
 def categories(id):
     '''
     new route that will display the contents of a specific category
+
     '''
+    category = Category.query.get(id)
+
+    if category is None:
+        abort(404)
+
     title = f'{id}'
-    return render_template('categories.html',id = id)
+    pitches = Pitch.get_pitches(id)
+    return render_template('categories.html',title = title, pitches=pitches,category=category)
+
+
+@main.route('/pitch/<int:id>', methods =['GET','POST'])
+@login_required
+def one_pitch(id):
+
+    pitches = Pitch.query.get(id)
+    comments = Comment.get_comments(id)
+
+    return render_template('one_pitch.html', pitches=pitches,comments=comments)
+
+
+
+
+@main.route('/categories/pitch/new/<int:id>', methods = ['GET','POST'])
+@login_required
+def new_pitch(id):
+
+
+    form = PitchForm()
+    category = Category.query.get(id)
+
+    if form.validate_on_submit():
+        content = form.content.data
+
+        new_pitch = Pitch(content=content,category_id=category,user_id=current_user.id)
+
+
+    return render_template ('new_pitches.html',pitch_form=form)
+
+
 
 
 

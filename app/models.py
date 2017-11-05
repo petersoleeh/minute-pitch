@@ -20,6 +20,7 @@ class Category(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255))
     description = db.Column(db.String(255))
+    pitches = db.relationship('Pitch',backref='category',lazy="dynamic")
 
     def save_category(self):
         db.session.add(self)
