@@ -3,3 +3,18 @@
   {{ super() }}
   <link rel="stylesheet" href="{{url_for('static', filename='css/index.css')}}">
 {%endblock%}
+
+
+{%block content%}
+<div class="container">
+<h3>{{pitches.content}}</h3>
+ <hr>
+<h2>Comments</h2>
+<h3>{%if comment%} {{macro.displayComment(comment)}}</h3>
+{%else%}
+<h3 class="text-center">No comments</h3>
+{%endif%}
+
+<p><a class="btn btn-info" href="/pitch/new/{{pitches.id}}">Add Comment</a></p>
+</div>
+{%endblock%}

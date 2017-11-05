@@ -20,7 +20,7 @@ class Category(db.Model):
     id = db.Column(db.Integer,primary_key = True)
     name = db.Column(db.String(255))
     description = db.Column(db.String(255))
-    pitches = db.relationship('Pitch',backref='category',lazy="dynamic")
+
 
     def save_category(self):
         db.session.add(self)
@@ -32,6 +32,9 @@ class Category(db.Model):
         return category
 
 class Pitch(db.Model):
+
+    all_pitches = []
+
     __tablename__ = 'pitches'
 
     id = db.Column(db.Integer,primary_key = True)
@@ -53,10 +56,10 @@ class Pitch(db.Model):
     '''
     list the pitches available
     '''
-    all_pitches = []
 
-    def save_pitch(self):
-        Pitch.all_pitches.append(self)
+
+    # def save_pitch(self):
+    #     Pitch.all_pitches.append(self)
 
     @classmethod
     def clear_pitches(cls):
@@ -68,9 +71,10 @@ class Comment(db.Model):
     __tablename__ = 'comments'
 
     id = db.Column(db.Integer,primary_key = True)
-    username = db.Column(db.String(255))
+    comment_content = db.Column(db.String(255))
     user_id =db.Column(db.Integer,db.ForeignKey("users.id"))
     pitch_id = db.Column(db.Integer,db.ForeignKey("pitches.id"))
+
 
 
 

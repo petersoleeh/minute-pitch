@@ -12,14 +12,25 @@
 {%endmacro%}
 
 <!-- show pitches -->
-{%macro displayPitchesList(Pitch_list)%}
+{% macro displayPitchesList(Pitch_list) %}
 
-  {%for pitch in pitch_list%}
+  {%for pitches in Pitch_list%}
   <div id="pitches" class="container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12 pitch-card text-center">
-  <h2><a href="/pitch/{{pitche.id}}">{{pitch.content}}</a></h2>
-  <h4><small>{{pitch.posted}}</small></h4>
+  <h3><a href="/pitch/{{pitches.id}}">{{pitches.content}}</a></h3>
+  <h4><small>{{pitches.posted}}</small></h4>
+</div>
 
 
   {%endfor%}
 
+{%endmacro%}
+
+<!-- display comments -->
+{% macro displayComment(comment_list) %}
+
+  {%for comments in comment_list%}
+  <div id="comments" class="container-fluid col-xs-12 col-sm-12 col-md-12 col-lg-12 comment-card text-center">
+    <h3>{{comments.comment_content}}</h3>
+  </div>
+  {%endfor%}
 {%endmacro%}

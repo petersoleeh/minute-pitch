@@ -1,4 +1,4 @@
-from flask import render_template,url_for,abort
+from flask import render_template,redirect,url_for,abort
 from . import main
 from ..models import Category,Comment,User,Pitch
 # from ..models import get_category
@@ -58,7 +58,9 @@ def new_pitch(id):
     if form.validate_on_submit():
         content = form.content.data
 
-        new_pitch = Pitch(content=content,category_id=category,user_id=current_user.id)
+        new_pitch = Pitch(content=content,category_id=category.id)
+        new_pitch.save_pitches()
+        return redirect(url_for('.categories', id = category.id))
 
 
     return render_template ('new_pitches.html',pitch_form=form)

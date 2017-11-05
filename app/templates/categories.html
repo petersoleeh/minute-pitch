@@ -8,11 +8,14 @@
 {% endblock %}
 
 
+
 <!-- content block -->
 {%block content%}
 <div class="container">
 <ul>
-  {{macro.displayPitchesList(pitches)}}
+  {% if pitches %} {{ macro.displayPitchesList(pitches) }} {%else%}
+  <h4 class="text-center">This Category has no Pitch</h4>{% endif %}
+  <a class="btn btn-info text-center" href="/categories/pitch/new/{{category.id}}">Write a new Pitch</a>
 </ul>
 </div>
 {%endblock%}
