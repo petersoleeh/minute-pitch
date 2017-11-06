@@ -80,19 +80,20 @@ def profile(uname):
 
 
 # comment section
-# @main.route('/categories/comment/new/<int:id>', methods = ['GET','POST'])
-# @login_required
-# def new_comment(id):
-#
-#     form = CommentForm()
-#
-#     if form.validate_on_submit():
-#         title = form.title.data
-#         comment = form.comment.data
-#
-#
-#         new_comment.save_comment()
-#         return redirect(url_for('login')
-#
-#
-#     return render_template('new_comment.html')
+@main.route('/categories/comment/new/<int:id>', methods = ['GET','POST'])
+@login_required
+def new_comment(id):
+
+    form = CommentForm()
+    pitches = Pitch.query.get(id)
+
+    if form.validate_on_submit():
+        title = form.title.data
+        comment = form.comment.data
+
+        new_comment = Comment(pitch_id=pitches.id)
+        new_comment.save_comment()
+        return redirect(url_for('.one_pitch',id=pitches.id))
+
+
+    return render_template('new_comment.html',comment_form=form)
