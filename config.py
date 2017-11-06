@@ -2,7 +2,7 @@ import os
 
 class Config:
 
-    SQLALCHEMY_TRACK_MODIFICATION = False
+    # SQLALCHEMY_TRACK_MODIFICATION = False
     SECRET_KEY =os.environ.get('SECRET_KEY')
 
 class ProdConfig(Config):
