@@ -9,8 +9,8 @@
 <div class="container">
 <h3>{{pitches.content}}</h3>
  <hr>
-<h2>Comments</h2>
-<h3>{%if comment%} {{macro.displayComment(comment)}}</h3>
+<h2><u>Comments</u></h2>
+<h3>{%if comment%} {{macro.displayCommentList(comment)}}</h3>
 {%else%}
 <h3 class="text-center">No comments</h3>
 {%endif%}
