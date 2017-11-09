@@ -54,6 +54,7 @@ def new_pitch(id):
 
     form = PitchForm()
     category = Category.query.get(id)
+    comment = Comment.get_comments(id)
 
     if form.validate_on_submit():
         content = form.content.data
@@ -86,12 +87,13 @@ def new_comment(id):
 
     form = CommentForm()
     pitches = Pitch.query.get(id)
+    # comment_content = []
 
     if form.validate_on_submit():
         title = form.title.data
-        comment = form.comment.data
+        comment_content = form.comment_content.data
 
-        new_comment = Comment(pitch_id=pitches.id)
+        new_comment = Comment(pitch_id=pitches.id,comment_content=comment_content)
         new_comment.save_comment()
         return redirect(url_for('.one_pitch',id=pitches.id))
 
